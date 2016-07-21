@@ -5,6 +5,7 @@ Click here to learn more. http://go.microsoft.com/fwlink/?LinkId=518007
 
 var gulp = require('gulp');
 var ts = require('gulp-typescript');
+var clean = require('gulp-clean');
 var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('default', function () {
@@ -46,7 +47,7 @@ gulp.task("copy-typescript", function () {
           .pipe(gulp.dest(paths.webroot + "app/"));
 });
 
-gulp.task("compile-typescript", function () {
+gulp.task("compile-typescript-build", function () {
     return gulp.src("./Scripts/**/*.ts")
         .pipe(sourcemaps.init())
         .pipe(ts({
@@ -61,6 +62,12 @@ gulp.task("compile-typescript", function () {
         .pipe(gulp.dest(paths.webroot + "app/"));
 });
 
+gulp.task("clean-js-from-scripts", function () {
+    return gulp.src("./Scripts/**/*.js")
+    .pipe(clean());
+});
+
+gulp.task("compile-typescript", ["compile-typescript-build", "clean-js-from-scripts"])
 gulp.task("make-typescript", ["copy-typescript", "compile-typescript"]);
 gulp.task("copy-deps", ["copy-deps:rxjs", 'copy-deps:angular2', 'copy-deps:systemjs', 'copy-deps:es6-shim', 'copy-deps:es6-promise']);
 gulp.watch("./Scripts/**/*.ts", ['make-typescript']);
