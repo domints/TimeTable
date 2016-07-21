@@ -1,13 +1,13 @@
-<form [ngFormModel]="formModel" (submit)="onSubmit()">
+<form [ngFormModel]="formModel" (submit)="onLogin($event)">
     <h2>Zaloguj</h2>
-    <input type="text" class="form-control" placeholder="Nazwa użytkownika" required="" autofocus="" [(ngModel)]="formModel.Login" />
-    <input type="password" class="form-control" placeholder="Hasło" required="" [(ngModel)]="formModel.Password" />
+    <input ngControl="login" type="text" class="form-control" placeholder="Nazwa użytkownika" required="" autofocus="" />
+    <input ngControl="password" type="password" class="form-control" placeholder="Hasło" required="" />
     <div class="checkbox">
         <label>
             <input value="remember-me" type="checkbox" [(ngModel)]="formModel.RememberMe"> Remember me
         </label>
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="submitPending">
-        Zaloguj <span *ngIf="!submitPending" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+        Zaloguj <i *ngIf="submitPending" class="fa fa-cog fa-spin"></i>
     </button>
 </form>

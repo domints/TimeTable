@@ -1,4 +1,5 @@
 ﻿import {Component} from "angular2/core";
+import {ControlGroup, FormBuilder, Validators} from "angular2/common";
 import {ViewModels, FormModels} from "./models";
 // import {AuthService} from './AuthService';
 
@@ -8,10 +9,23 @@ import {ViewModels, FormModels} from "./models";
 })
 export class LoginFormComponent {
     public loginModel = new ViewModels.LoginModel();
-    public formModel = new FormModels.LoginFormModel();
+    public formModel: ControlGroup;
     public submitPending = false;
 
-    constructor() {
+    constructor(fBuilder:FormBuilder) {
         this.loginModel.Version = "0.1";
-    }    
+        this.formModel = fBuilder.group({
+            login: ["", Validators.required],
+            password: ["", Validators.required]
+        });
+    }
+
+    onLogin(event) {
+        //this.submitPending = true;
+        alert("submitujesz");
+
+        this.submitPending = !this.submitPending;
+        event.preventDefault();
+        return false;
+    }
 }

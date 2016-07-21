@@ -4,6 +4,8 @@ Click here to learn more. http://go.microsoft.com/fwlink/?LinkId=518007
 */
 
 var gulp = require('gulp');
+var ts = require('gulp-typescript');
+var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('default', function () {
     // place code for your default task here
@@ -39,4 +41,26 @@ gulp.task("copy-deps:rxjs", function () {
          .pipe(gulp.dest(paths.npmLibs + '/rxjs/'));
 });
 
+gulp.task("copy-typescript", function () {
+    return gulp.src("./Scripts/**/*.ts")
+          .pipe(gulp.dest(paths.webroot + "app/"));
+});
+
+gulp.task("compile-typescript", function () {
+    return gulp.src("./Scripts/**/*.ts")
+        .pipe(sourcemaps.init())
+        .pipe(ts({
+            "sourceMap": false,
+            "outDir": paths.webroot + "app/",
+            "target": "es5",
+            "emitDecoratorMetadata": true,
+            "experimentalDecorators": true,
+            "module": "commonjs"
+        }))
+        .pipe(sourcemaps.write('.', { includeContent: false, sourceRoot: "./" }))
+        .pipe(gulp.dest(paths.webroot + "app/"));
+});
+
+gulp.task("make-typescript", ["copy-typescript", "compile-typescript"]);
 gulp.task("copy-deps", ["copy-deps:rxjs", 'copy-deps:angular2', 'copy-deps:systemjs', 'copy-deps:es6-shim', 'copy-deps:es6-promise']);
+gulp.watch("./Scripts/**/*.ts", ['make-typescript']);

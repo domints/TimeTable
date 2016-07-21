@@ -1,5 +1,5 @@
 {
-  "compileOnSave": true,
+  "compileOnSave": false,
   "compilerOptions": {
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -8,11 +8,13 @@
     "noImplicitAny": false,
     "outDir": "../wwwroot/app/",
     "removeComments": false,
+    "sourceRoot": "../wwwroot/app/",
     "sourceMap": true,
     "target": "es5",
-    "watch": true
+    "watch": false
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "*.js"
   ]
 }

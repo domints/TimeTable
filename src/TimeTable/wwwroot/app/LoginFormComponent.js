@@ -9,23 +9,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("angular2/core");
+var common_1 = require("angular2/common");
 var models_1 = require("./models");
 // import {AuthService} from './AuthService';
 var LoginFormComponent = (function () {
-    function LoginFormComponent() {
+    function LoginFormComponent(fBuilder) {
         this.loginModel = new models_1.ViewModels.LoginModel();
-        this.formModel = new models_1.FormModels.LoginFormModel();
         this.submitPending = false;
         this.loginModel.Version = "0.1";
+        this.formModel = fBuilder.group({
+            login: ["", common_1.Validators.required],
+            password: ["", common_1.Validators.required]
+        });
     }
+    LoginFormComponent.prototype.onLogin = function (event) {
+        //this.submitPending = true;
+        alert("submitujesz");
+        this.submitPending = !this.submitPending;
+        event.preventDefault();
+        return false;
+    };
     LoginFormComponent = __decorate([
         core_1.Component({
             selector: "tt-loginform",
             templateUrl: "/app/templates/loginform.template.html"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [common_1.FormBuilder])
     ], LoginFormComponent);
     return LoginFormComponent;
 }());
 exports.LoginFormComponent = LoginFormComponent;
+
 //# sourceMappingURL=LoginFormComponent.js.map

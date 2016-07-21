@@ -24,4 +24,5 @@ var RegisterFormComponent = (function () {
     return RegisterFormComponent;
 }());
 exports.RegisterFormComponent = RegisterFormComponent;
+
 //# sourceMappingURL=RegisterFormComponent.js.map

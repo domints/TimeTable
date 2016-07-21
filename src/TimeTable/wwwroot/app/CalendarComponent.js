@@ -22,4 +22,5 @@ var CalendarComponent = (function () {
     return CalendarComponent;
 }());
 exports.CalendarComponent = CalendarComponent;
+
 //# sourceMappingURL=CalendarComponent.js.map

@@ -1,1 +1,1 @@
-{"version":3,"file":"boot.js","sourceRoot":"","sources":["../../Scripts/boot.ts"],"names":[],"mappings":";AAAA,oEAAoE;AACpE,wBAAqC,2BAA2B,CAAC,CAAA;AACjE,oBAAqC,OAAO,CAAC,CAAA;AAE7C,mBAAS,CAAC,kBAAY,CAAC,CAAC"}
+{"version":3,"sources":["boot.ts"],"names":[],"mappings":";AAAA,oEAAoE;AACpE,wBAAqC,2BAA2B,CAAC,CAAA;AACjE,oBAAqC,OAAO,CAAC,CAAA;AAE7C,mBAAS,CAAC,kBAAY,CAAC,CAAC","file":"boot.js","sourceRoot":"./"}
