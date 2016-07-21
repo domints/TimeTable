@@ -1,9 +1,11 @@
-<form id="form_register">
+<form id="form_register" [ngFormModel]="formModel" (submit)="onRegister($event)">
     <h2>Zarejestruj</h2>
-    <input type="text" class="form-control" placeholder="Imię i nazwisko" required="" [(ngModel)]="registerModel.FullName" />
-    <input type="text" class="form-control" placeholder="Nazwa użytkownika" required="" [(ngModel)]="registerModel.UserName" />
-    <input type="email" class="form-control" placeholder="Adres E-Mail" required="" [(ngModel)]="registerModel.Email" />
-    <input type="password" class="form-control" placeholder="Hasło" required="" [(ngModel)]="registerModel.Password" />
-    <input type="password" class="form-control" placeholder="Powtórz hasło" required="" [(ngModel)]="passwordConfirm" />
-    <button class="btn btn-lg btn-primary btn-block" type="submit" >Zarejestruj</button>
+    <input type="text" class="form-control" placeholder="Imię i nazwisko" required="" ngControl="FullName" />
+    <input type="text" class="form-control" placeholder="Nazwa użytkownika" required="" ngControl="UserName" />
+    <input type="email" class="form-control" placeholder="Adres E-Mail" required="" ngControl="Email" />
+    <input type="password" class="form-control" placeholder="Hasło" required="" ngControl="Password" />
+    <input type="password" class="form-control" placeholder="Powtórz hasło" required="" ngControl="PasswordConfirm" />
+    <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="submitPending || !formModel.valid">
+        Zarejestruj <i *ngIf="submitPending" class="fa fa-cog fa-spin"></i>
+    </button>
 </form>

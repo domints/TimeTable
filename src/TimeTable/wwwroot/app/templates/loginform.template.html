@@ -4,10 +4,10 @@
     <input ngControl="password" type="password" class="form-control" placeholder="Hasło" required="" />
     <div class="checkbox">
         <label>
-            <input value="remember-me" type="checkbox" [(ngModel)]="formModel.RememberMe"> Remember me
+            <input ngControl="rememberMe" value="remember-me" type="checkbox"> Remember me
         </label>
     </div>
-    <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="submitPending">
+    <button class="btn btn-lg btn-primary btn-block" type="submit" [disabled]="submitPending || !formModel.valid">
         Zaloguj <i *ngIf="submitPending" class="fa fa-cog fa-spin"></i>
     </button>
 </form>

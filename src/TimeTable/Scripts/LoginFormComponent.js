@@ -15,14 +15,18 @@ var LoginFormComponent = (function () {
         this.submitPending = false;
         this.loginModel.Version = "0.1";
         this.formModel = fBuilder.group({
-            login: ["", common_1.Validators.required],
-            password: ["", common_1.Validators.required]
+            login: new common_1.Control("", common_1.Validators.required),
+            password: new common_1.Control(this.loginModel.Password, common_1.Validators.required),
+            rememberMe: new common_1.Control(false)
         });
     }
     LoginFormComponent.prototype.onLogin = function (event) {
-        //this.submitPending = true;
-        alert("submitujesz");
-        this.submitPending = !this.submitPending;
+        this.submitPending = true;
+        this.loginModel.Login = this.formModel.controls['login'].value;
+        this.loginModel.Password = this.formModel.controls['password'].value;
+        this.loginModel.RememberMe = this.formModel.controls['rememberMe'].value;
+        console.log(this.loginModel);
+        this.submitPending = false;
         event.preventDefault();
         return false;
     };
