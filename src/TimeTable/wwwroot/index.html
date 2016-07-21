@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="/" />
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="css/site.min.css" />
+    <meta charset="utf-8" />
+    <meta name="description" content="TimeTabe to book some thingys" />
+    <title>Meh.</title>
+</head>
+<body>
+    
+    <tt-app class="main_container">
+        <div style="background: rgba(255, 255, 255, 0.6); min-width: 100vw; min-height: 100vh;">
+            <div style="background-image: url(images/loader.gif); background-position:center; background-repeat: no-repeat; min-width: 100vw; min-height: 100vh;"></div>
+        </div>
+    </tt-app>
+
+    <script src="lib/npmlibs/es6-shim/es6-shim.js"></script>
+    <script src="lib/npmlibs/es6-promise/es6-promise.js"></script>
+    <script src="lib/npmlibs/systemjs/system-polyfills.src.js"></script>
+    <script src="lib/npmlibs/angular2/angular2-polyfills.js"></script>
+    <script src="lib/npmlibs/systemjs/system.src.js"></script>
+    <script src="lib/npmlibs/rxjs/Rx.js"></script>
+    <script src="lib/npmlibs/angular2/angular2.js"></script>
+    <script src="lib/npmlibs/angular2/router.js"></script>
+    <script src="lib/npmlibs/angular2/http.js"></script>
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script>
+        System.config({
+            packages: {
+                'app': { defaultExtension: 'js' },
+                'lib': { defaultExtension: 'js' },
+            }
+        });
+
+        System.import('app/boot')
+            .then(null, console.error.bind(console));
+    </script>
+
+</body>
+</html>
